@@ -92,7 +92,7 @@ void task_geom19()
     double dy1 = y - r;
     bool inTopCircle = (dx1 * dx1 + dy1 * dy1 <= r * r);
 
-    // Нижнє оло з центром 
+    // Нижнє коло з центром 
     bool inBottomCircle = (x * x + (y + r) * (y + r) <= r * r);
 
     // Між лініями 
