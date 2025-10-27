@@ -87,22 +87,19 @@ void task_geom19()
         return;
       }
  // Область варіанта 19: червона частина
-// Центр правого кола: (r, -r)
-    double dx = x - r;
-    double dy = y + r;
+// Верхнє коло з центром 
+    double dx1 = x - r;
+    double dy1 = y - r;
+    bool inTopCircle = (dx1 * dx1 + dy1 * dy1 <= r * r);
 
-    // Умова належності колу
-    bool inCircle = (dx * dx + dy * dy <= r * r);
+    // Нижнє коло з центром 
+    bool inBottomCircle = (x * x + (y + r) * (y + r) <= r * r);
 
-    // Умова нижче лінії y = -x + r
-    bool belowLine = (y <= -x + r);
+    // Між лініями 
+    bool betweenLines = (y <= -x + r && y >= -x - r);
 
-    // Квадрант: права нижня частина
-    bool inQuadrant = (x >= 0 && y <= 0);
-
-    // Червона область = усередині кола, нижче прямої, у 4-му квадранті
-    if (inCircle && belowLine && inQuadrant)
+    // У правій частині 
+    bool rightHalf = (x >= 0);
         cout << "Точка належить червоній області (варіант 19)." << endl;
-    else
         cout << "Точка НЕ належить червоній області (варіант 19)." << endl;
 }
