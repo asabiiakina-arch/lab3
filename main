@@ -102,6 +102,7 @@ void task_geom19()
     // Умова належності до червоної області (варіант 19):
     bool inRedArea = outsideTopCircle && betweenLines && rightHalf;
 
+    // Перевірка
     if (inRedArea)
         cout << "Точка належить червоній області." << endl;
     else
