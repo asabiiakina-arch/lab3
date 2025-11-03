@@ -71,35 +71,39 @@ void task_if13()
     cout << "Середнє значення: " << middle << endl;
 }
 // ===================== Geom19 =====================
-// Прототип функцій
+// Прототип функції
 void task_geom19()
 {
     cout << "************* Geometry (variant 19) *****************" << endl;
+
     double x, y, r;
     cout << "Enter radius r: ";
     cin >> r;
     cout << "Enter coordinates x, y: ";
     cin >> x >> y;
-    
-    if (!cin || r <= 0)
-      {
+
+    if (!cin || r <= 0) 
+    {
         cout << "Invalid input!" << endl;
         return;
-      }
- // Область варіанта 19: червона частина
-// Верхнє коло з центром 
-    double dx1 = x - r;
-    double dy1 = y - r;
-    bool inTopCircle = (dx1 * dx1 + dy1 * dy1 <= r * r);
-
-    // Нижнє коло з центром 
-    bool inBottomCircle = (x * x + (y + r) * (y + r) <= r * r);
+    }
+    
+    // Верхня частина
+    double dx = x - 0;
+    double dy = y - r;
+    bool outsideTopCircle = (dx * dx + dy * dy >= r * r); // ПОЗА КОЛОМ
 
     // Між лініями 
     bool betweenLines = (y <= -x + r && y >= -x - r);
 
-    // У правій частині 
+    // У правій нижній частині  
     bool rightHalf = (x >= 0);
-        cout << "Точка належить червоній області " << endl;
-        cout << "Точка НЕ належить червоній області " << endl;
-}
+
+    // Умова належності до червоної області (варіант 19):
+    bool inRedArea = outsideTopCircle && betweenLines && rightHalf;
+
+    if (inRedArea)
+        cout << "Точка належить червоній області." << endl;
+    else
+        cout << "Точка НЕ належить червоній області." << endl;
+  }
